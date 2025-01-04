@@ -1,0 +1,48 @@
+<body id="task-form-page">
+<div tpl-if="$error" id='error-block'>
+    {{ $error }}
+</div>
+
+<form method="POST" action="?cmd=task-add-submit">
+    <input name="id" id="data-task-id" type="hidden" value="{{ $id }}">
+
+    <div class="mb-3 mt-3">
+        <label for="description" class="form-label">Task description:</label>
+        <textarea class="form-control" id="description" rows="3" name="description">{{ $description }}</textarea>
+    </div>
+
+    <div class="d-flex flex-row justify-content-between">
+        <div>
+            <label class="form-check-label" >Estimated: </label>
+            <tpl tpl-foreach="range(1, 5) as $i" tpl-trim-contents>
+                {{ $i }} <input class="m-1" type="radio" name="estimate" id="estimate-{{ $i }}" value="{{ $i }}"
+                                tpl-checked="$i == $estimate">
+            </tpl>
+        </div>
+        <div>
+            <label class="form-check-label" for="assignTo">Assigned to: </label>
+            <select id="assignTo" name="employeeId">
+<option>Select employee</option>
+                    <option tpl-foreach="$allEmployees as $employee"
+                            tpl-selected="$employee->id === $employeeId"
+                            value="{{ $employee->id }}" >{{ $employee }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend d-flex align-items-center">
+            <label class="form-check-label" for="completed">Completed: </label>
+            <div class="ml-2">
+                <input type="checkbox" class="mx-1" id="completed" name="completed"
+                       aria-label="Checkbox is task completed" tpl-checked="$completed">
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end mt-3">
+        <input type="submit" class="btn btn-danger" id="deleteButton" name="deleteButton" tpl-if="$id" value="Delete">
+        <input type="submit" class="btn btn-primary" id="submitButton" name="submitButton" value="Submit">
+    </div>
+</form>
+</body>

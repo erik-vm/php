@@ -1,0 +1,55 @@
+
+<body id="dashboard-page">
+<div class="flex-container row">
+    <div class="col-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Picture</th>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+            </tr>
+            </thead>
+            <tpl tpl-foreach="$employees as $employee">
+                <tr>
+                    <td id="picture"><img src="{{$employee ->picture}}"></td>
+                    <td id='firstName'><span data-employee-id="{{$employee->id}}" >
+                <a href="?cmd=employee-form&id={{$employee->id}}" id="employee-edit-link-">{{$employee ->firstName}} {{$employee ->lastName}}</a>
+            </span>
+                    </td>
+                    <td id="position">{{$employee ->position}}</td>
+                </tr>
+
+
+            </tpl>
+        </table>
+    </div>
+    <div class="col-7">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Estimate</th>
+                <th scope="col">Assigned to</th>
+                <th scope="col">Completed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tpl tpl-foreach="$tasks as $task">
+                <tr>
+                    <input name="id" id="id" type="hidden" value="{{ $task->id }}">
+                    <td>
+                        <a href="?cmd=task-form&id={{ $task->id }}" id="task-edit-link-{{ $task->id }}">
+                            <div data-task-id="{{ $task->id }}">{{ $task->description }}</div>
+                        </a>
+                    </td>
+                    <td>{{ $task->estimate }}</td>
+                    <td>{{ $task->getAssignedToName($task->assignedTo) }}</td>
+                    <td>{{ $task->isCompleted() }}</td>
+                </tr>
+            </tpl>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title></title>
+</head>
+<body>
+
+<main>
+    <div  id="error-block" tpl-if="$errors">
+        <tpl tpl-foreach="$errors as $error">
+            <strong>{{ $error }}</strong><br>
+        </tpl>
+    </div>
+
+    <form id="input-form">
+        <div class="label-cell"><label for="title">Pealkiri:</label></div>
+        <div class="input-cell"><input id="title"
+                                       name="title"
+                                       value="{{ $title }}"
+                                       type="text"/>
+        </div>
+
+        <div class="label-cell">Hinne:</div>
+        <div class="input-cell">
+            <tpl tpl-foreach="range(1, 5) as $grade">
+                <label for="grade{{ $grade }}">{{ $grade }}</label>
+                <input type="radio"
+                       id="grade{{ $grade }}"
+                       name="grade"
+                       tpl-checked="$grade === $gradeValue"
+                       value="{{ $grade }}">
+            </tpl>
+        </div>
+
+        <div class="flex-break"></div>
+
+        <div class="label-cell"><label for="read">Loetud:</label></div>
+        <div class="input-cell">
+            <input type="checkbox"
+                   name="isRead"
+                   id="read"
+                   tpl-checked="$isRead"/>
+        </div>
+
+        <div class="flex-break"></div>
+
+        <div class="label-cell"></div>
+        <div class="input-cell button-cell">
+            <input tpl-if="$isEditForm" name="deleteButton" type="submit" value="Kustuta" class="danger">
+            <input name="submitButton" type="submit" value="Salvesta">
+        </div>
+    </form>
+</main>
+
+</body>
+</html>

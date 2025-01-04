@@ -1,0 +1,27 @@
+<body id="employee-list-page">
+<div tpl-if="$message" id='message-block'>
+    {{ $message }}
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Picture</th>
+        <th scope="col">Name</th>
+        <th scope="col">Position</th>
+    </tr>
+    </thead>
+    <tpl tpl-foreach="$employees as $employee">
+        <tr>
+            <td id="picture"><img src="{{ $employee ->picture }}"></td>
+            <td id='name'><span data-employee-id="{{ $employee->id }}">
+                <a href="?cmd=employee-form&id={{$employee->id}}" data-employee-id="{{ $employee->id }}" id="employee-edit-link-{{ $employee->id }}">{{ $employee ->firstName . ' ' . $employee ->lastName }}</a>
+            </span>
+            </td>
+            <td id="position">{{ $employee ->position }}</td>
+        </tr>
+
+
+    </tpl>
+</table>
+</body>
+

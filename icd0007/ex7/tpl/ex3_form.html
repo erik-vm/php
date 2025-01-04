@@ -1,0 +1,16 @@
+<h3>{{ $title }}</h3>
+<div id="error-block" tpl-if="$errors">
+    <tpl tpl-foreach="$errors as $error">
+        <strong>{{ $error }}</strong><br>
+    </tpl>
+</div>
+<form method="post" action="ex3.php">
+
+    <input type="hidden" name="cmd" value="{{ $cmd }}">
+
+    <input name="temperature" value="{{$temp}}">
+
+    <input type="submit" name="calculateButton" value="Calculate"/>
+
+</form>
+

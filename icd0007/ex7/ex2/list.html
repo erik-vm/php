@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <title></title>
+</head>
+<body>
+
+<main>
+
+    <div id="author-list">
+
+        <div class="title-cell header-cell">Pealkiri</div>
+        <div class="author-cell header-cell">Autorid</div>
+        <div class="grade-cell header-cell">Hinne</div>
+
+        <div class="flex-break header-divider"></div>
+
+        <tpl tpl-foreach="$books as $book">
+
+
+            <div>
+                {{$book->title}}
+            </div>
+            <div>
+                <tpl tpl-foreach="$book->authors as $author" tpl-trim-contents>
+                    {{$author->firstName}} {{ $author->lastName}}
+                    <tpl tpl-if="!$last">, </tpl>
+                </tpl>
+
+
+            </div>
+
+
+            <div class="score-empty">
+                        <span tpl-foreach="range(1, 5) as $grade"
+                              tpl-class='score-filled if $book->grade >= $grade'>&#9733;</span>
+
+            </div>
+
+            <div class="flex-break"></div>
+
+        </tpl>
+    </div>
+</main>
+
+</body>
+</html>

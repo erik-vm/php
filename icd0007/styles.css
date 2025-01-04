@@ -1,0 +1,33 @@
+body {
+    max-width: 50%;
+    margin: auto;
+    height: 100vh;
+}
+
+#error-block {
+    padding: 0.3rem;
+    width: 100%;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
+    border-radius: 0.25rem;
+    margin: auto auto 1rem;
+    text-align: center;
+    background-color: #f32020;
+    color: #ffffff;
+}
+
+#message-block {
+    padding: 0.3rem;
+    width: 100%;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
+    border-radius: 0.25rem;
+    margin: .5rem auto;
+    text-align: center;
+    background-color: #1be31b;
+    color: #ffffff;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+}

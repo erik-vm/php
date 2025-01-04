@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <title></title>
+</head>
+<body>
+
+<main>
+
+    <div id="author-list">
+
+        <div class="title-cell header-cell">Pealkiri</div>
+        <div class="author-cell header-cell">Autorid</div>
+        <div class="grade-cell header-cell">Hinne</div>
+
+        <div class="flex-break header-divider"></div>
+
+        {foreach $books as $book}
+            <div>
+             {$book->title}
+            </div>
+            <div n:inner-foreach="$book->authors as $author">
+                {$author->firstName} {$author->lastName}{if !$iterator->last}, {/if}
+            </div>
+
+            <div class="score-empty" n:inner-foreach="range(1, 5) as $grade">
+                <span class="{$grade}">&#9733;</span>
+
+            </div>
+
+            <div class="flex-break"></div>
+        {/foreach}
+
+    </div>
+</main>
+
+</body>
+</html>

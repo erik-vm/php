@@ -1,0 +1,36 @@
+
+<body id="employee-form-page">
+<div tpl-if="$error" id='error-block'>
+    {{ $error }}
+</div>
+<form method="POST" action="?cmd=employee-add-submit">
+    <input name="id" type="hidden" value='{{ $id }}'>
+    <div class="mb-3">
+        <label for="fn" class="form-label">First name</label>
+        <input type="text" class="form-control" id="fn" name="firstName" value="{{ $firstName }}">
+    </div>
+    <div class="mb-3">
+        <label for="ln" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="ln" name="lastName" value="{{ $lastName }}">
+    </div>
+    <div class="mb-3">
+        <label for="pos" class="form-label">Position</label>
+        <input type="text" class="form-control" id="pos" name="position" value="{{ $position }}">
+    </div>
+    <div class="mb-3">
+        <label for="pic" class="form-label">Picture url</label>
+        <input type="file" class="form-control" id="pic" name="picture" value="{{ $picture }}">
+    </div>
+<div class="d-flex justify-content-end">
+
+    <input type="submit" class="btn btn-danger" id="deleteButton" name="deleteButton" tpl-if='$id' value="Delete">
+    <input type="submit" class="btn btn-primary" id="submitButton" name="submitButton" value="Submit">
+
+</div>
+
+</form>
+
+</body>
+
+
+
